@@ -92,9 +92,9 @@ export const getMarkdownProcessor = (plugins = []) => {
   // All plugins in opts.remarkPlugins will be added to remark
   plugins.forEach(plugin => {
     if (Array.isArray(plugin) && plugin.length > 1) {
-      fn.use(plugin[0], plugin[1]);
+      processor.use(plugin[0], plugin[1]);
     } else {
-      fn.use(plugin);
+      processor.use(plugin);
     }
   });
 

@@ -1,23 +1,23 @@
 {
-  "name": "react-static-plugin-md-pages",
+  "name": "react-static-plugin-md",
   "description": "react-static plugin to create nested pages from a given source directory",
-  "version": "0.3.0",
-  "main": "index.js",
+  "version": "0.3.1",
+  "main": "dist/index.js",
   "license": "MIT",
   "bugs": "https://github.com/kitten/react-static-plugin-md-pages/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kitten/react-static-plugin-md-pages.git"
+    "url": "https://github.com/juandjara/react-static-plugin-md-pages.git"
   },
   "scripts": {
-    "build": "babel src --out-dir .",
+    "build": "babel src --out-dir dist",
     "clean": "rimraf *.js",
     "prepublishOnly": "run-s clean build"
   },
   "files": [
     "README.md",
     "LICENSE",
-    "*.js"
+    "dist/*.js"
   ],
   "babel": {
     "presets": [

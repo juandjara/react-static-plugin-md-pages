@@ -6,6 +6,8 @@
   </a>
 </p>
 
+This is a fork of `react-static-plugin-md-pages` that fixes some bugs
+
 > A [react-static](https://react-static.js.org) plugin to create nested pages from a given source
 > directory.
 
@@ -32,9 +34,9 @@ export default {
         pathPrefix: '', // prefix for added react-static routes (if any)
         template: './src/template.js', // path to React template component
         remarkPlugins: [], // add additional remark plugins here
-      }
-    ]
-  ]
+      },
+    ],
+  ],
 };
 ```
 
@@ -169,11 +171,7 @@ An example for a component may look like the following:
 
 ```js
 // ./src/components/template.js
-export default ({ children }) => (
-  <main>
-    {children}
-  </main>
-);
+export default ({ children }) => <main>{children}</main>;
 ```
 
 ### `remarkPlugins` (a list of remark plugins)
@@ -220,7 +218,6 @@ all markdown pages.
 
 The `useMarkdownPage` hook is available as long as you are on any of the markdown page, `useMarkdownTree` is available in any react-static page.
 
-
 ```
 useMarkdownPage()
 // => Page
@@ -238,7 +235,7 @@ contain:
 
 - `path`: The route to the page, including the `pathPrefix` (if any has been set)
 - `originalPath`: The original path to the markdown file (which is useful as a unique key)
-- `frontmatter`: The JSON object of frontmatter data (*normalized)
+- `frontmatter`: The JSON object of frontmatter data (\*normalized)
 - `headings`: A list of all `h1`, `h2`, and `h3` headings in the markdown file
 
 The `frontmatter` data is normalised. This means that when your markdown file doesn't have any
