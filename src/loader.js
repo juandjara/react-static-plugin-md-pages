@@ -25,10 +25,7 @@ export default function loader(source) {
   // Compute the page's originalPath and path
   const relative = path.relative(location, this.resourcePath);
   const filename = path.basename(relative, '.md');
-  const originalPath = path.join(
-    path.dirname(relative),
-    filename
-  );
+  const originalPath = path.join(path.dirname(relative), filename);
 
   const keyPath = (pathPrefix ? [pathPrefix] : [])
     .concat(originalPath.split(path.sep))
@@ -111,7 +108,7 @@ export default function loader(source) {
   return `
     import React from "react";
     import Template from ${template};
-    import { PageContext, hastToMdx } from ${utils};
+    import { hastToMdx } from ${utils};
 
     var assets = {
       ${assets.join('')}
@@ -119,14 +116,11 @@ export default function loader(source) {
 
     var hast = ${JSON.stringify(hast)};
     var pageData = ${JSON.stringify(pageData)};
-    var context = { page: pageData };
 
     export default function MarkdownTemplate(props) {
       var mdx = React.useMemo(() => hastToMdx(hast, assets), [hast, assets]);
       return (
-        <PageContext.Provider value={context}>
-          <Template {...props}>{mdx}</Template>
-        </PageContext.Provider>
+        <Template {...pageData} {...props}>{mdx}</Template>
       );
     };
   `;
