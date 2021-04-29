@@ -110,7 +110,7 @@ export const getPageData = (tree, filename) => {
 
   // Find all headings and convert them to a reusable format
   const headings = selectAll('heading', tree)
-    .filter(node => node.depth <= 3)
+    .filter(node => node.depth <= 4)
     .map(node => {
       const depth = node.depth;
       const value = (depth === 1 && frontmatter.title) || toString(node);
